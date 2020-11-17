@@ -2,9 +2,11 @@
 
 CONFIG_FILES=(
     .gitconfig
-    Brewfile
     .zshrc
+    .p10k.zsh
+    Brewfile
 )
+
 MY_RC_PATH=$(
     cd $(dirname $0)
     pwd
