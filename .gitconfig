@@ -1,0 +1,15 @@
+[user]
+	name = Guitao Liu
+	email = guitao.liu@Outlook.com
+	signingkey = 330D765C278644FD
+[init]
+	defaultBranch = ""
+[commit]
+	gpgsign = true
+[tag]
+	forceSignAnnotated = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
