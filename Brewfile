@@ -13,12 +13,8 @@ brew "asciinema"
 brew "cloc"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
 brew "dash"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Pack, ship and run any application as a lightweight container
 brew "docker", link: false
-# Modern replacement for 'ls'
-brew "exa"
 # Lint your Python code for style and logical errors
 brew "flake8"
 # GitHub command-line tool
@@ -33,14 +29,10 @@ brew "gnupg"
 brew "go"
 # Improved top (interactive process viewer)
 brew "htop"
-# Configurable static site generator
-brew "hugo"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
 # Mac App Store command-line interface
 brew "mas"
-# Run a Kubernetes cluster locally
-brew "minikube"
 # Remote terminal application
 brew "mosh"
 # Open source relational database management system
@@ -55,16 +47,8 @@ brew "neofetch"
 brew "node@12"
 # Python dependency management tool
 brew "pipenv"
-# Python package management tool
-brew "poetry"
-# Object-relational database system
-brew "postgresql"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
-# Messaging broker
-brew "rabbitmq"
-# Persistent key-value database, with built-in net interface
-brew "redis"
 # User interface to the TELNET protocol
 brew "telnet"
 # Simplified and community-driven man pages
@@ -83,8 +67,6 @@ brew "yadm"
 brew "yarn"
 # Disk Usage/Free Utility
 brew "muesli/tap/duf"
-# TiDB is a MySQL compatible distributed database
-brew "pingcap/brew/tidb-server"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 cask "adguard"
@@ -95,7 +77,9 @@ cask "baidunetdisk"
 cask "balenaetcher"
 cask "charles"
 cask "cheatsheet"
+cask "chromedriver"
 cask "clash-for-windows"
+cask "clean-me"
 cask "dash"
 cask "dbeaver-community"
 cask "deepl"
