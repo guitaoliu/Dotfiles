@@ -37,49 +37,56 @@ set shiftround
 
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,big5,euc-jp,euc-kr,latin1
 
+set synmaxcol=500
+
+set scrolloff=3
+
 " }}}
 
 " Key bindings ---------------{{{
 nnoremap <leader>sp :split<CR>
-nnoremap <leader>vs :vsplit<CR>
+nnoremap <leader>vs :tsplit<CR>
 nnoremap <leader>st :tab split<CR>
 
 noremap \ ,
-autocmd FileType help noremap <buffer> q :q<cr>
-
-for s:i in range(1, 9)
-  execute 'nnoremap <Leader>' . s:i . ' ' . s:i . 'gt'
-endfor
 " }}}
+
 
 " Plugins --------------------{{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'luochen1990/rainbow'
 Plug 'terryma/vim-multiple-cursors' 
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvie/vim-flake8'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'gabrielelana/vim-markdown'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'flazz/vim-colorschemes'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'dracula/vim'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
 " }}}
 
 set background=dark
-colorscheme molokai
+colorscheme dracula
+let g:rainbow_active = 1
 
-let g:airline_theme='simple'
+let g:airline_theme='dracula'
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:gist_open_browser_after_post = 1
 
 " vim 8 / neovim HEAD runtime: when ft==python, cms:=#\ %s
 " "   -- when g:NERDSpaceDelims==1, then NERDComment results in double space
@@ -93,34 +100,13 @@ let g:NERDDefaultAlign = 'left'
 nnoremap <leader>cp :%s/\(print(.*)\)/# \1/g<CR>
 nnoremap <leader>cq :%s/# \(print(.*)\)/\1/g<CR>
 
+nmap <leader>h :TagbarToggle<CR>
 
-" Rainbow Parenthese --------------------{{{
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-" }}}
 
 " NerdTree Settings --------------------{{{
 augroup nerdtree_settings
   autocmd!
   map <leader>t :NERDTreeToggle<CR>
-  map <C-n> :NERDTreeToggle<CR>
   nnoremap <leader>d :NERDTreeFind<cr>
   let NERDTreeShowHidden=1
   let NERDTreeWinSize=30
@@ -155,18 +141,24 @@ imap <C-e> <END>
 imap <C-a> <HOME>
 imap <C-f> <Right>
 imap <C-b> <Left>
-augroup relative_numbser
-    autocmd!
-    autocmd InsertEnter * :set norelativenumber
-    autocmd InsertLeave * :set relativenumber
-augroup END
 " }}}
 
 " Python --------------------{{{
 augroup python_lang
     autocmd FileType python nmap <leader>=  <Plug>(coc-format)
+augroup eng
+" }}}
+
+" fzf setting ---------------{{{
+augroup fzf_settting
+    noremap <leader>p :Files<CR>
+    noremap <leader>b :Buffers<CR>
+    noremap <leader>rg :Rg<CR>
 augroup end
 " }}}
+
+" coc settings 
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-go', 'coc-explorer', 'coc-fzf-preview', 'coc-yaml', 'coc-tsserver', 'coc-highlight', 'coc-snippets', 'coc-lists']
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -194,25 +186,6 @@ else
   set signcolumn=yes
 endif
 
-" coc snippets --------------------{{{
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" }}}
-
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -227,18 +200,17 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -257,8 +229,10 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -267,6 +241,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -297,8 +275,22 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+" Note coc#float#scroll works on neovim >= 0.4.0 or vim >= 8.2.0750
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" NeoVim-only mapping for visual mode scroll
+" Useful on signatureHelp after jump placeholder of snippet expansion
+if has('nvim')
+  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
+  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
+endif
+
 " Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+" Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 

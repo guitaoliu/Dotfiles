@@ -3,7 +3,7 @@
 	email = guitao.liu@Outlook.com
 	signingkey = 330D765C278644FD
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
 [init]
 	defaultBranch = ""
 [commit]

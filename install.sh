@@ -4,6 +4,7 @@ CONFIG_FILES=(
     .gitconfig
     .zshrc
     .vimrc
+    .vim
     .p10k.zsh
     Brewfile
 )

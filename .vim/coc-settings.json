@@ -1,0 +1,22 @@
+{
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.jediEnabled": false,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "python",
+        "css",
+        "golang"
+    ],
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod"
+            ],
+            "disableWorkspaceFolders": true,
+            "filetypes": [
+                "go"
+            ]
+        },
+    }
+}
