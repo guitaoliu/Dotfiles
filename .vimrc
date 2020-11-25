@@ -41,6 +41,8 @@ set synmaxcol=500
 
 set scrolloff=3
 
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " }}}
 
 " Key bindings ---------------{{{
@@ -132,8 +134,8 @@ augroup nerdtree_settings
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
   autocmd VimEnter * :wincmd l
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
+
 
 " InsertMode Quick Edit --------------------{{{
 " use emacs shortcut in INSERT mode
