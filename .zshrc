@@ -12,6 +12,9 @@ export PATH=/usr/local/sbin:$PATH
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g'!.git'"
 
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
 #export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
 # Path to your oh-my-zsh installation.
