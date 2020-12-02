@@ -11,16 +11,24 @@ tap "teamookla/speedtest"
 brew "asciinema"
 # Statistics utility to count lines of code
 brew "cloc"
+# Configurable talking characters in ASCII art
+brew "cowsay"
+# Reimplementation of ctags(1)
+brew "ctags"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
 brew "dash"
 # Pack, ship and run any application as a lightweight container
 brew "docker", link: false
 # Lint your Python code for style and logical errors
 brew "flake8"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GitHub command-line tool
 brew "gh"
 # Git extension for versioning large files
 brew "git-lfs"
+# HTTP/2 C Library
+brew "nghttp2"
 # Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
@@ -36,19 +44,27 @@ brew "mas"
 # Remote terminal application
 brew "mosh"
 # Open source relational database management system
-brew "mysql"
-# Open source relational database management system
 brew "mysql-client"
 # Interactive cheatsheet tool for the command-line
 brew "navi"
 # Fast, highly customisable system info script
 brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Platform built on V8 to build network applications
 brew "node@12"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Python dependency management tool
 brew "pipenv"
+# Object-relational database system
+brew "postgresql", restart_service: true
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # User interface to the TELNET protocol
 brew "telnet"
 # Simplified and community-driven man pages
@@ -75,11 +91,13 @@ cask "adoptopenjdk"
 cask "appcleaner"
 cask "baidunetdisk"
 cask "balenaetcher"
+cask "bob"
+cask "camo-studio"
 cask "charles"
 cask "cheatsheet"
 cask "chromedriver"
-cask "clash-for-windows"
 cask "clean-me"
+cask "cocoapods"
 cask "dash"
 cask "dbeaver-community"
 cask "deepl"
@@ -90,6 +108,7 @@ cask "dropbox"
 cask "elpass"
 cask "fantastical"
 cask "figma"
+cask "fork"
 cask "free-download-manager"
 cask "gitkraken"
 cask "goland"
@@ -113,7 +132,9 @@ cask "qlstephen"
 cask "qq"
 cask "setapp"
 cask "skype"
+cask "slack"
 cask "spotify"
+cask "stats"
 cask "steam"
 cask "teamspeak-client"
 cask "teamviewer"
