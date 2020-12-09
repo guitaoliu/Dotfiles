@@ -1,7 +1,7 @@
 " General settings --------------------{{{
 set encoding=utf-8
 let mapleader=','
-syntax enable
+syntax on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
@@ -38,7 +38,6 @@ set shiftround
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,big5,euc-jp,euc-kr,latin1
 
 set synmaxcol=500
-
 set scrolloff=3
 
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -69,6 +68,8 @@ Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvie/vim-flake8'
+Plug 'kiteco/vim-plugin'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'gabrielelana/vim-markdown'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -76,6 +77,9 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dracula/vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'mechatroner/rainbow_csv'
 Plug 'Yggdroot/indentLine'
 
 call plug#end()
@@ -83,12 +87,15 @@ call plug#end()
 " }}}
 
 set background=dark
-colorscheme dracula
+colorscheme nord
 let g:rainbow_active = 1
 
-let g:airline_theme='dracula'
+let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" Vim Kite settings 
+let g:kite_supported_languages = ['*']
 
 " vim 8 / neovim HEAD runtime: when ft==python, cms:=#\ %s
 " "   -- when g:NERDSpaceDelims==1, then NERDComment results in double space
