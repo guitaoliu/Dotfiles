@@ -12,6 +12,7 @@ set nofoldenable
 set mouse=a
 
 set t_Co=256
+set t_ut=
 set termguicolors
 
 set backspace=2 
@@ -76,21 +77,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dracula/vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'tomasiser/vim-code-dark'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'mechatroner/rainbow_csv'
 Plug 'Yggdroot/indentLine'
-
 call plug#end()
 
 " }}}
 
 set background=dark
-colorscheme nord
+colorscheme codedark
 let g:rainbow_active = 1
 
-let g:airline_theme='nord'
+let g:airline_theme='codedark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 

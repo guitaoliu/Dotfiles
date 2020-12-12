@@ -9,16 +9,14 @@ tap "pingcap/brew"
 tap "teamookla/speedtest"
 # Record and share terminal sessions
 brew "asciinema"
+# Powerful, enterprise-ready, open source web server with automatic HTTPS
+brew "caddy"
 # Statistics utility to count lines of code
 brew "cloc"
 # Configurable talking characters in ASCII art
 brew "cowsay"
 # Reimplementation of ctags(1)
 brew "ctags"
-# POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
-brew "dash"
-# Pack, ship and run any application as a lightweight container
-brew "docker", link: false
 # Lint your Python code for style and logical errors
 brew "flake8"
 # Command-line fuzzy finder written in Go
@@ -37,6 +35,8 @@ brew "gnupg"
 brew "go"
 # Improved top (interactive process viewer)
 brew "htop"
+# Curl statistics made simple
+brew "httpstat"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
 # Mac App Store command-line interface
@@ -63,6 +63,8 @@ brew "pipenv"
 brew "postgresql", restart_service: true
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Python version management
+brew "pyenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # User interface to the TELNET protocol
@@ -85,20 +87,15 @@ brew "yarn"
 brew "muesli/tap/duf"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
-cask "adguard"
 cask "adobe-acrobat-pro"
 cask "adoptopenjdk"
 cask "appcleaner"
-cask "baidunetdisk"
 cask "balenaetcher"
 cask "bob"
 cask "camo-studio"
 cask "charles"
 cask "cheatsheet"
 cask "chromedriver"
-cask "clean-me"
-cask "cocoapods"
-cask "dash"
 cask "dbeaver-community"
 cask "deepl"
 cask "discord"
@@ -109,7 +106,6 @@ cask "elpass"
 cask "fantastical"
 cask "figma"
 cask "fork"
-cask "free-download-manager"
 cask "gitkraken"
 cask "goland"
 cask "google-chrome"
@@ -119,7 +115,6 @@ cask "iina"
 cask "intel-power-gadget"
 cask "iterm2"
 cask "karabiner-elements"
-cask "keka"
 cask "microsoft-auto-update"
 cask "notion"
 cask "obs"
@@ -140,23 +135,12 @@ cask "teamspeak-client"
 cask "teamviewer"
 cask "telegram-desktop"
 cask "tencent-meeting"
+cask "tuxera-ntfs"
 cask "typora"
 cask "upic"
 cask "visual-studio-code"
 cask "vnc-viewer"
 cask "webstorm"
 cask "wechat"
-cask "xmind"
-cask "zoomus"
+cask "zoom"
 cask "zotero"
-mas "Disk Speed Test", id: 425264550
-mas "GoodNotes", id: 1444383602
-mas "Keynote", id: 409183694
-mas "Microsoft Remote Desktop", id: 1295203466
-mas "MoneyWiz", id: 1511185140
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Reeder", id: 1449412482
-mas "ToothFairy", id: 1191449274
-mas "Xcode", id: 497799835
-mas "Xnip", id: 1221250572
