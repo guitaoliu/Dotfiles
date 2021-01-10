@@ -11,12 +11,17 @@
         "golang": {
             "command": "gopls",
             "rootPatterns": [
-                "go.mod"
+                "go.mod",
+                ".vim/",
+                ".git/",
+                ".hg/"
             ],
-            "disableWorkspaceFolders": true,
             "filetypes": [
                 "go"
-            ]
-        },
+            ],
+            "initializationOptions": {
+                "usePlaceholders": true
+            }
+        }
     }
 }

@@ -33,6 +33,10 @@ brew "pinentry"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Language server for the Go language
+brew "gopls"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # Improved top (interactive process viewer)
 brew "htop"
 # Curl statistics made simple
@@ -51,8 +55,6 @@ brew "navi"
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node@12"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Pinentry for GPG on Mac
@@ -67,35 +69,39 @@ brew "pre-commit"
 brew "pyenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
 # User interface to the TELNET protocol
 brew "telnet"
 # Simplified and community-driven man pages
 brew "tldr"
+# Program that allows you to count code, quickly
+brew "tokei"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Vi 'workalike' with many additional features
-brew "vim"
 # Internet file retriever
 brew "wget"
 # Automatic workarounds for problems in Wine
 brew "winetricks"
-# Yet Another Dotfiles Manager
-brew "yadm"
 # JavaScript package manager
 brew "yarn"
 # Disk Usage/Free Utility
 brew "muesli/tap/duf"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
+cask "adguard"
 cask "adobe-acrobat-pro"
 cask "adoptopenjdk"
 cask "appcleaner"
+cask "baidunetdisk"
 cask "balenaetcher"
 cask "bob"
 cask "camo-studio"
 cask "charles"
 cask "cheatsheet"
 cask "chromedriver"
+cask "dash"
+cask "datagrip"
 cask "dbeaver-community"
 cask "deepl"
 cask "discord"
@@ -109,12 +115,15 @@ cask "fork"
 cask "gitkraken"
 cask "goland"
 cask "google-chrome"
+cask "gpg-suite"
 cask "grammarly"
 cask "hackintool"
 cask "iina"
 cask "intel-power-gadget"
 cask "iterm2"
 cask "karabiner-elements"
+cask "keka"
+cask "kindle"
 cask "microsoft-auto-update"
 cask "notion"
 cask "obs"
@@ -128,16 +137,16 @@ cask "qq"
 cask "setapp"
 cask "skype"
 cask "slack"
+cask "snipaste"
 cask "spotify"
 cask "stats"
-cask "steam"
+cask "sunloginclient"
 cask "teamspeak-client"
 cask "teamviewer"
 cask "telegram-desktop"
 cask "tencent-meeting"
 cask "tuxera-ntfs"
 cask "typora"
-cask "upic"
 cask "visual-studio-code"
 cask "vnc-viewer"
 cask "webstorm"

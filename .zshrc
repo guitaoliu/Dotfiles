@@ -8,6 +8,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH=~/go/bin:$PATH
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g'!.git'"
 
