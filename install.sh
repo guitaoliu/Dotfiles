@@ -4,6 +4,7 @@ CONFIG_FILES=(
     .gitconfig
     .zshrc
     .vimrc
+    .tmux.conf
     .vim/coc-settings.json
     .p10k.zsh
     Brewfile
