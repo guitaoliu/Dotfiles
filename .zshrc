@@ -8,14 +8,18 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=~/go/bin:$PATH
+export PATH=/Users/gtliu/.fnm:$PATH
 
+export PYENV_ROOT="$HOME/.pyenv"
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g'!.git'"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-#export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+# auto start tmux on start
+export ZSH_TMUX_AUTOSTART=true
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/gtliu/.oh-my-zsh"
@@ -41,33 +45,34 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit for \
-    light-mode  zsh-users/zsh-autosuggestions \
-    light-mode  zdharma/fast-syntax-highlighting \
-                zdharma/history-search-multi-word
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zdharma/fast-syntax-highlighting 
+zinit light zdharma/history-search-multi-word
 
 zinit ice depth=1;zinit light romkatv/powerlevel10k
 
-zinit snippet OMZ::lib/completion.zsh
-zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/key-bindings.zsh
 zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+
 
 zinit ice lucid wait='1'
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
 # fnm
-export PATH=/Users/gtliu/.fnm:$PATH
 eval "`fnm env`"
+
+alias tmux="TERM=screen-256color-bce tmux"
 
