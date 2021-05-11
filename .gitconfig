@@ -5,7 +5,7 @@
 [gpg]
 	program = gpg
 [init]
-	defaultBranch = ""
+	defaultBranch = master
 [commit]
 	gpgsign = true
 [tag]
