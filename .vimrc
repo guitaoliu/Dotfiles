@@ -7,12 +7,14 @@ set shiftwidth=4
 set softtabstop=0
 set expandtab
 set nu
-set foldmethod=indent
+set foldmethod=syntax
 set nofoldenable  
 set mouse=a
+set laststatus=2
 
 set t_Co=256
-set t_ut=
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 set backspace=2 
@@ -149,6 +151,11 @@ imap <C-e> <END>
 imap <C-a> <HOME>
 imap <C-f> <Right>
 imap <C-b> <Left>
+augroup relative_numbser
+    autocmd!
+    autocmd InsertEnter * :set norelativenumber
+    autocmd InsertLeave * :set relativenumber
+augroup END
 " }}}
 
 " Python --------------------{{{

@@ -20,6 +20,7 @@ export LC_CTYPE=en_US.UTF-8
 
 # auto start tmux on start
 export ZSH_TMUX_AUTOSTART=true
+export TERM=screen-256color
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/gtliu/.oh-my-zsh"
@@ -57,7 +58,7 @@ zinit snippet OMZ::lib/key-bindings.zsh
 zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+#zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 
 
 zinit ice lucid wait='1'
@@ -73,6 +74,4 @@ fi
 
 # fnm
 eval "`fnm env`"
-
-alias tmux="TERM=screen-256color-bce tmux"
 
