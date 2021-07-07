@@ -13,8 +13,6 @@ set mouse=a
 set laststatus=2
 
 set t_Co=256
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 set backspace=2 
@@ -43,14 +41,16 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,big5,euc-jp,euc-kr,latin1
 set synmaxcol=500
 set scrolloff=3
 
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " }}}
 
 " Key bindings ---------------{{{
 nnoremap <leader>sp :split<CR>
-nnoremap <leader>vs :tsplit<CR>
-nnoremap <leader>st :tab split<CR>
+nnoremap <leader>vs :vsplit<CR>
+nnoremap <leader>ts :tab split<CR>
+map <up>    <C-w>k
+map <down>  <C-w>j
+map <right> <C-w>l
+map <left>  <C-w>h
 
 noremap \ ,
 " }}}
@@ -60,43 +60,34 @@ noremap \ ,
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
+Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'luochen1990/rainbow'
 Plug 'terryma/vim-multiple-cursors' 
-Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'nvie/vim-flake8'
-Plug 'kiteco/vim-plugin'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'mzlogin/vim-markdown-toc'
-Plug 'gabrielelana/vim-markdown'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tomasiser/vim-code-dark'
-Plug 'kyoz/purify', { 'rtp': 'vim' }
+
+" Apperence 
+Plug 'dracula/vim'
+Plug 'luochen1990/rainbow'
 Plug 'mechatroner/rainbow_csv'
-Plug 'Yggdroot/indentLine'
+Plug 'Mofiqul/dracula.nvim'
+
 call plug#end()
 
 " }}}
 
 set background=dark
-colorscheme codedark
+colorscheme dracula
 let g:rainbow_active = 1
 
-let g:airline_theme='codedark'
+let g:airline_theme='dracula'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" Vim Kite settings 
-let g:kite_supported_languages = ['*']
 
 " vim 8 / neovim HEAD runtime: when ft==python, cms:=#\ %s
 " "   -- when g:NERDSpaceDelims==1, then NERDComment results in double space
@@ -142,6 +133,7 @@ augroup nerdtree_settings
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
   autocmd VimEnter * :wincmd l
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
 
 
@@ -158,12 +150,6 @@ augroup relative_numbser
 augroup END
 " }}}
 
-" Python --------------------{{{
-augroup python_lang
-    autocmd FileType python nmap <leader>=  <Plug>(coc-format)
-augroup eng
-" }}}
-
 " fzf setting ---------------{{{
 augroup fzf_settting
     noremap <leader>p :Files<CR>
@@ -172,8 +158,28 @@ augroup fzf_settting
 augroup end
 " }}}
 
+
 " coc settings 
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-go', 'coc-explorer', 'coc-fzf-preview', 'coc-yaml', 'coc-tsserver', 'coc-highlight', 'coc-snippets', 'coc-lists']
+let g:coc_global_extensions = [
+            \ 'coc-pyright',
+            \ 'coc-tsserver',
+            \ 'coc-go',
+            \ 'coc-css',
+            \ 'coc-tailwindcss',
+            \ 'coc-prettier',
+            \ 'coc-eslint',
+            \ 'coc-markdownlint',
+            \ 'coc-json',
+            \ 'coc-toml',
+            \ 'coc-yaml',
+            \ 'coc-fzf-preview',
+            \ 'coc-highlight',
+            \ 'coc-snippets',
+            \ 'coc-lists',
+            \ 'coc-spell-checker']
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 
 " TextEdit might fail if hidden is not set.
 set hidden
